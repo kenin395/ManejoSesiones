@@ -13,6 +13,7 @@ package services;
 import models.Producto;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductoServiceImpl implements ProductoService {
 
@@ -32,5 +33,9 @@ public class ProductoServiceImpl implements ProductoService {
                 new Producto(2L, "Computadora", "Electrónico", 230.60),
                 new Producto(3L, "Cocina", "Electrodoméstico", 300.40)
         );
+    }
+    @Override
+    public Optional<Producto> porId(long id) {
+        return listar().stream().filter(p-> p.getIdProducto().equals(id)).findAny();
     }
 }
